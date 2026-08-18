@@ -1,15 +1,1186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Invitation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Արտյոմ Պետրոսյան | Birthday Invitation</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f4efe7;
+      color: #332c27;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --cream: #f4efe7;
+      --cream-light: #fbf8f3;
+      --brown: #332c27;
+      --brown-soft: #6f6258;
+      --gold: #b89a69;
+      --gold-light: #d7c19d;
+      --white: #ffffff;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.08),
+          rgba(0, 0, 0, 0.15) 40%,
+          rgba(0, 0, 0, 0.72)
+        ),
+        url("541160766_18522583753006348_6811110549064550431_n.jpg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at center,
+          transparent 35%,
+          rgba(0, 0, 0, 0.28) 100%
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 70px 24px 65px;
+      text-align: center;
+      color: white;
+      animation: heroAppear 1.6s ease forwards;
+    }
+
+    @keyframes heroAppear {
+      from {
+        opacity: 0;
+        transform: translateY(45px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .eyebrow {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 12vw, 85px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: -2px;
+      text-shadow: 0 4px 24px rgba(0,0,0,.25);
+    }
+
+    .hero-info {
+      margin-top: 25px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.9;
+    }
+
+    .scroll-button {
+      margin: 28px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.65);
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      animation: floatDown 1.8s ease-in-out infinite;
+      backdrop-filter: blur(8px);
+    }
+
+    @keyframes floatDown {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(9px); }
+    }
+
+    /* ================= GENERAL ================= */
+
+    section {
+      padding: 95px 22px;
+    }
+
+    .container {
+      width: min(100%, 850px);
+      margin: auto;
+    }
+
+    .section-small {
+      display: block;
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 10px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(35px, 9vw, 58px);
+      line-height: 1.05;
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    .lead {
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--brown-soft);
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    /* ================= INVITATION ================= */
+
+    .invitation {
+      background: var(--cream-light);
+      text-align: center;
+    }
+
+    .invitation-card {
+      max-width: 720px;
+      margin: auto;
+      padding: 50px 24px;
+      border: 1px solid rgba(184,154,105,.35);
+      position: relative;
+    }
+
+    .invitation-card::before,
+    .invitation-card::after {
+      content: "✦";
+      position: absolute;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .invitation-card::before {
+      top: 16px;
+      left: 18px;
+    }
+
+    .invitation-card::after {
+      bottom: 16px;
+      right: 18px;
+    }
+
+    /* ================= COUNTDOWN ================= */
+
+    .countdown-section {
+      background: #302a26;
+      color: white;
+    }
+
+    .countdown-section .section-small {
+      color: var(--gold-light);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 40px;
+    }
+
+    .count-box {
+      padding: 28px 6px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.045);
+      backdrop-filter: blur(10px);
+    }
+
+    .count-number {
+      font-size: clamp(30px, 8vw, 55px);
+      display: block;
+      color: var(--gold-light);
+    }
+
+    .count-label {
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: .7;
+      margin-top: 7px;
+      display: block;
+    }
+
+    /* ================= DETAILS ================= */
+
+    .details {
+      background: var(--cream);
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 40px;
+      border-top: 1px solid rgba(51,44,39,.18);
+      border-bottom: 1px solid rgba(51,44,39,.18);
+    }
+
+    .detail-item {
+      text-align: center;
+      padding: 35px 10px;
+    }
+
+    .detail-item:not(:last-child) {
+      border-right: 1px solid rgba(51,44,39,.18);
+    }
+
+    .detail-item small {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .detail-item strong {
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    .map-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 35px;
+      padding: 16px 28px;
+      border: 1px solid var(--brown);
+      color: var(--brown);
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .35s ease;
+    }
+
+    .map-button:hover {
+      color: white;
+      background: var(--brown);
+      transform: translateY(-3px);
+    }
+
+    /* ================= ACCORDION ================= */
+
+    .accordion-section {
+      background: var(--cream-light);
+    }
+
+    .accordion {
+      margin-top: 35px;
+      border-top: 1px solid rgba(51,44,39,.2);
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid rgba(51,44,39,.2);
+    }
+
+    .accordion-title {
+      width: 100%;
+      padding: 25px 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--brown);
+      font-family: Georgia, serif;
+      font-size: 21px;
+      text-align: left;
+    }
+
+    .plus {
+      font-family: Arial, sans-serif;
+      transition: .35s;
+      font-size: 25px;
+      color: var(--gold);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease;
+    }
+
+    .accordion-content p {
+      padding: 0 4px 25px;
+      color: var(--brown-soft);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .accordion-item.active .plus {
+      transform: rotate(45deg);
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 280px;
+    }
+
+    /* ================= GALLERY ================= */
+
+    .gallery-section {
+      padding-left: 0;
+      padding-right: 0;
+      background: #28231f;
+      color: white;
+      overflow: hidden;
+    }
+
+    .gallery-header {
+      padding: 0 22px 45px;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 22px 30px;
+      scrollbar-width: none;
+    }
+
+    .gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery img {
+      width: 80vw;
+      max-width: 430px;
+      height: 520px;
+      object-fit: cover;
+      scroll-snap-align: center;
+      flex: 0 0 auto;
+      transition: transform .5s ease, filter .5s ease;
+      filter: saturate(.85);
+    }
+
+    .gallery img:hover {
+      transform: scale(.98);
+      filter: saturate(1.05);
+    }
+
+    /* ================= RSVP ================= */
+
+    .rsvp {
+      background: var(--cream-light);
+    }
+
+    .rsvp-card {
+      max-width: 620px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .input {
+      width: 100%;
+      margin-top: 30px;
+      padding: 18px;
+      border: 0;
+      border-bottom: 1px solid rgba(51,44,39,.4);
+      background: transparent;
+      outline: none;
+      font-family: Georgia, serif;
+      font-size: 17px;
+      text-align: center;
+      color: var(--brown);
+    }
+
+    .choice-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .choice {
+      padding: 18px 10px;
+      border: 1px solid rgba(51,44,39,.35);
+      background: transparent;
+      color: var(--brown);
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      transition: .35s;
+      font-size: 12px;
+    }
+
+    .choice:hover,
+    .choice.active {
+      background: var(--brown);
+      color: white;
+    }
+
+    .send-button {
+      width: 100%;
+      margin-top: 20px;
+      border: 0;
+      background: var(--gold);
+      color: white;
+      padding: 18px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .35s;
+    }
+
+    .send-button:hover {
+      background: var(--brown);
+      transform: translateY(-3px);
+    }
+
+    .confirmation {
+      display: none;
+      margin-top: 24px;
+      color: var(--gold);
+      font-size: 17px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 100px 24px 55px;
+      background: #28231f;
+      color: white;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-weight: 400;
+      font-size: clamp(34px, 9vw, 56px);
+      margin: 20px 0;
+    }
+
+    footer p {
+      opacity: .72;
+      line-height: 1.7;
+    }
+
+    .signature {
+      margin-top: 65px;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      letter-spacing: 1px;
+      opacity: .55;
+    }
+
+    /* ================= MUSIC ================= */
+
+    .music-button {
+      position: fixed;
+      right: 17px;
+      top: 17px;
+      z-index: 999;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.45);
+      background: rgba(20,20,20,.4);
+      color: white;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .music-button.playing {
+      animation: musicPulse 1.8s infinite;
+    }
+
+    @keyframes musicPulse {
+      0%,100% {
+        box-shadow: 0 0 0 0 rgba(255,255,255,.25);
+      }
+      50% {
+        box-shadow: 0 0 0 12px rgba(255,255,255,0);
+      }
+    }
+
+    /* ================= SCROLL ANIMATIONS ================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(45px);
+      transition: 1s ease;
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: 1s ease;
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: 1s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    @media(max-width: 600px) {
+
+      section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-item:not(:last-child) {
+        border-right: 0;
+        border-bottom: 1px solid rgba(51,44,39,.18);
+      }
+
+      .gallery img {
+        height: 470px;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-  <h1>Birthday Invitation 🎂</h1>
-  <p>You are invited to celebrate with us!</p>
+  <!-- MUSIC -->
+
+  <audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-button" id="musicButton">♪</button>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Birthday Celebration
+      </div>
+
+      <h1>
+        Artyom<br>
+        Petrosyan
+      </h1>
+
+      <div class="hero-info">
+        25 Օգոստոսի 2026<br>
+        PORT 88
+      </div>
+
+      <a href="#invitation" class="scroll-button">
+        ↓
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- INVITATION -->
+
+  <section class="invitation" id="invitation">
+
+    <div class="container">
+
+      <div class="invitation-card reveal">
+
+        <span class="section-small">
+          Սիրելի՛ հյուրեր
+        </span>
+
+        <h2 class="section-title">
+          Սիրով հրավիրում ենք Ձեզ
+        </h2>
+
+        <p class="lead">
+          Միասին նշելու մեզ համար շատ կարևոր ու գեղեցիկ օր՝
+          <strong>Արտյոմ Պետրոսյանի ծննդյան օրը։</strong>
+          <br><br>
+          Սիրով սպասում ենք Ձեր երեխաներին՝
+          միասին ստեղծելու ուրախ հիշողություններ,
+          խաղալու, պարելու և պարզապես հրաշալի ժամանակ անցկացնելու։
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COUNTDOWN -->
+
+  <section class="countdown-section">
+
+    <div class="container center reveal">
+
+      <span class="section-small">
+        Մինչև մեր հանդիպումը
+      </span>
+
+      <h2 class="section-title">
+        Հաշվենք միասին
+      </h2>
+
+      <div class="countdown">
+
+        <div class="count-box">
+          <span class="count-number" id="days">00</span>
+          <span class="count-label">օր</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="hours">00</span>
+          <span class="count-label">ժամ</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="minutes">00</span>
+          <span class="count-label">րոպե</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="seconds">00</span>
+          <span class="count-label">վայրկյան</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DETAILS -->
+
+  <section class="details">
+
+    <div class="container center">
+
+      <div class="reveal-left">
+
+        <span class="section-small">
+          Save the date
+        </span>
+
+        <h2 class="section-title">
+          25 Օգոստոսի
+        </h2>
+
+      </div>
+
+      <div class="detail-grid reveal">
+
+        <div class="detail-item">
+          <small>Ամսաթիվ</small>
+          <strong>25.08.2026</strong>
+        </div>
+
+        <div class="detail-item">
+          <small>Ժամ</small>
+          <strong>14:00 — 18:00</strong>
+        </div>
+
+        <div class="detail-item">
+          <small>Վայր</small>
+          <strong>PORT 88</strong>
+        </div>
+
+      </div>
+
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Port88"
+        target="_blank">
+        Բացել քարտեզը
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- EVENT INFO -->
+
+  <section class="accordion-section">
+
+    <div class="container">
+
+      <span class="section-small">
+        Birthday plan
+      </span>
+
+      <h2 class="section-title">
+        Ինչ է սպասվում
+      </h2>
+
+      <div class="accordion">
+
+        <div class="accordion-item reveal-left">
+
+          <button class="accordion-title">
+            Խաղեր ու ժամանց
+            <span class="plus">+</span>
+          </button>
+
+          <div class="accordion-content">
+            <p>
+              Երեխաներին սպասվում են հետաքրքիր խաղեր,
+              ուրախ ժամանց և լիքը դրական էմոցիաներ։
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="accordion-item reveal-right">
+
+          <button class="accordion-title">
+            Պարեր և երաժշտություն
+            <span class="plus">+</span>
+          </button>
+
+          <div class="accordion-content">
+            <p>
+              Ծննդյան օրը չի կարող անցնել առանց երաժշտության,
+              պարերի և լավ տրամադրության։
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="accordion-item reveal-left">
+
+          <button class="accordion-title">
+            Միասին նշելու ենք 12-ամյակը
+            <span class="plus">+</span>
+          </button>
+
+          <div class="accordion-content">
+            <p>
+              Ամենակարևորը՝ միասին նշելու ենք
+              Արտյոմի գեղեցիկ 12-ամյակը և ստեղծելու
+              ևս մեկ հիշարժան օր։
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GALLERY -->
+
+  <section class="gallery-section">
+
+    <div class="gallery-header container reveal">
+
+      <span class="section-small">
+        Moments
+      </span>
+
+      <h2 class="section-title">
+        Artyom
+      </h2>
+
+      <p style="opacity:.7;">
+        Մի քանի սիրելի պահեր 🤍
+      </p>
+
+    </div>
+
+    <div class="gallery">
+
+      <img src="5197181127523768435.jpg" alt="Artyom">
+
+      <img src="5197181127523768436.jpg" alt="Artyom">
+
+      <img src="5197181127523768437.jpg" alt="Artyom">
+
+      <img src="5197181127523768438.jpg" alt="Artyom">
+
+      <img src="5197181127523768439.jpg" alt="Artyom">
+
+      <img src="5197181127523768440.jpg" alt="Artyom">
+
+    </div>
+
+  </section>
+
+
+  <!-- RSVP -->
+
+  <section class="rsvp">
+
+    <div class="container">
+
+      <div class="rsvp-card reveal">
+
+        <span class="section-small">
+          RSVP
+        </span>
+
+        <h2 class="section-title">
+          Կմասնակցե՞ք
+        </h2>
+
+        <p class="lead">
+          Խնդրում ենք նշել Ձեր մասնակցությունը
+          և գրել մասնակցող երեխայի անունը։
+        </p>
+
+        <input
+          type="text"
+          class="input"
+          id="guestName"
+          placeholder="Երեխայի անունը"
+        >
+
+        <div class="choice-wrapper">
+
+          <button
+            class="choice"
+            data-value="Այո, կմասնակցենք">
+            Այո, կմասնակցենք 🤍
+          </button>
+
+          <button
+            class="choice"
+            data-value="Ցավոք, չենք կարող">
+            Ցավոք, չենք կարող
+          </button>
+
+        </div>
+
+        <button
+          class="send-button"
+          id="sendRSVP">
+          Ուղարկել
+        </button>
+
+        <p class="confirmation" id="confirmation">
+          Շնորհակալ ենք պատասխանի համար 🤍
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container reveal">
+
+      <span class="section-small">
+        25 • 08 • 2026
+      </span>
+
+      <h2>
+        Սիրով սպասում ենք
+      </h2>
+
+      <p>
+        միասին նշելու
+        <br>
+        <strong>Արտյոմ Պետրոսյանի 12-ամյակը</strong>։
+      </p>
+
+      <div class="signature">
+        Պատրաստվել է սիրով՝
+        <br><br>
+        Lusine Sargsyan 🤍
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    /* ================= COUNTDOWN ================= */
+
+    const birthdayDate =
+      new Date("2026-08-25T14:00:00+04:00").getTime();
+
+    function updateCountdown() {
+
+      const now = new Date().getTime();
+
+      const distance = birthdayDate - now;
+
+      if (distance < 0) {
+        document.querySelector(".countdown").innerHTML =
+          "<h3>Այսօր տոնում ենք 🎉</h3>";
+        return;
+      }
+
+      const days =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      const hours =
+        Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) /
+          (1000 * 60 * 60)
+        );
+
+      const minutes =
+        Math.floor(
+          (distance % (1000 * 60 * 60)) /
+          (1000 * 60)
+        );
+
+      const seconds =
+        Math.floor(
+          (distance % (1000 * 60)) /
+          1000
+        );
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+
+    /* ================= ACCORDION ================= */
+
+    const accordionItems =
+      document.querySelectorAll(".accordion-item");
+
+    accordionItems.forEach(item => {
+
+      item
+        .querySelector(".accordion-title")
+        .addEventListener("click", () => {
+
+          item.classList.toggle("active");
+
+        });
+
+    });
+
+
+    /* ================= SCROLL ANIMATION ================= */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal, .reveal-left, .reveal-right"
+      );
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+    revealElements.forEach(element => {
+      observer.observe(element);
+    });
+
+
+    /* ================= MUSIC ================= */
+
+    const music =
+      document.getElementById("music");
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+    let isPlaying = false;
+
+    musicButton.addEventListener("click", () => {
+
+      if (!isPlaying) {
+
+        music.play();
+
+        musicButton.innerText = "♫";
+
+        musicButton.classList.add("playing");
+
+        isPlaying = true;
+
+      } else {
+
+        music.pause();
+
+        musicButton.innerText = "♪";
+
+        musicButton.classList.remove("playing");
+
+        isPlaying = false;
+
+      }
+
+    });
+
+
+    /* ================= RSVP ================= */
+
+    let selectedRSVP = "";
+
+    const choices =
+      document.querySelectorAll(".choice");
+
+    choices.forEach(choice => {
+
+      choice.addEventListener("click", () => {
+
+        choices.forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        choice.classList.add("active");
+
+        selectedRSVP =
+          choice.dataset.value;
+
+      });
+
+    });
+
+
+    document
+      .getElementById("sendRSVP")
+      .addEventListener("click", () => {
+
+        const name =
+          document
+            .getElementById("guestName")
+            .value
+            .trim();
+
+        if (!name) {
+
+          alert("Խնդրում ենք գրել երեխայի անունը 🤍");
+
+          return;
+        }
+
+        if (!selectedRSVP) {
+
+          alert("Խնդրում ենք նշել մասնակցությունը 🤍");
+
+          return;
+        }
+
+
+        /*
+        Այստեղ հետո կդնենք Ձեր WhatsApp համարը։
+        Օրինակ՝ 374XXXXXXXX
+        */
+
+        const phone = "374XXXXXXXX";
+
+
+        const text =
+          `Արտյոմի ծննդյան RSVP 🎂%0A%0A` +
+          `Անուն՝ ${encodeURIComponent(name)}%0A` +
+          `Պատասխան՝ ${encodeURIComponent(selectedRSVP)}`;
+
+
+        if (phone !== "374XXXXXXXX") {
+
+          window.open(
+            `https://wa.me/${phone}?text=${text}`,
+            "_blank"
+          );
+
+        }
+
+        document
+          .getElementById("confirmation")
+          .style.display = "block";
+
+      });
+
+  </script>
 
 </body>
 </html>
