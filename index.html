@@ -1884,6 +1884,8 @@
   let playerReady = false;
 
   let isPlaying = false;
+  let invitationOpened = false;
+  let musicStartAttempts = 0;
 
 
   const musicButton =
@@ -1931,6 +1933,14 @@
             playerReady = true;
 
             player.setVolume(45);
+
+            /* If the invitation was already opened before
+               YouTube finished loading, start the music now. */
+            if (invitationOpened) {
+              try {
+                player.playVideo();
+              } catch (e) {}
+            }
 
           },
 
@@ -2000,6 +2010,8 @@
     "click",
     function() {
 
+      invitationOpened = true;
+
       openingScreen.classList.add(
         "hidden"
       );
@@ -2011,18 +2023,31 @@
 
 
       /*
-        Music starts after
-        the visitor clicks.
+        Start music after the visitor clicks.
+        Retry briefly in case the YouTube API is still loading.
       */
 
-      if (
-        playerReady &&
-        player
-      ) {
+      function startMusicAfterOpen() {
 
-        player.playVideo();
+        if (playerReady && player) {
 
+          try {
+            player.unMute();
+            player.setVolume(45);
+            player.playVideo();
+          } catch (e) {}
+
+          return;
+        }
+
+        musicStartAttempts++;
+
+        if (musicStartAttempts < 20) {
+          setTimeout(startMusicAfterOpen, 150);
+        }
       }
+
+      startMusicAfterOpen();
 
     }
   );
@@ -2044,6 +2069,9 @@
         return;
 
       }
+
+      player.unMute();
+      player.setVolume(45);
 
 
       if (isPlaying) {
